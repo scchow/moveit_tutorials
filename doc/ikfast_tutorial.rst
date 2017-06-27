@@ -22,17 +22,19 @@ You should have already created a MoveIt! configuration package for your robot, 
 
 MoveIt! IKFast Installation
 ---------------------------
-Install the MoveIt! IKFast package either from debs or from source.
+Install the MoveIt! IKFast package either from debs or build from source.
 
 **Binary Install** ::
 
- sudo apt-get install ros-indigo-moveit-ikfast
+ sudo apt-get install ros-kinetic-moveit-kinematics
 
 **Source**
 
 Inside your catkin workspace ::
 
- git clone https://github.com/ros-planning/moveit_ikfast.git
+ git clone https://github.com/ros-planning/moveit.git
+
+The plugin is located under moveit_kinematics/ikfast_kinematics_plugin.
 
 OpenRAVE Installation
 ----------------------
@@ -70,7 +72,11 @@ If your robot is not in this format we recommend you create a ROS `URDF <http://
 
 where <myrobot_name> is the name of your robot.
 
-Often floating point issues arrise in converting a URDF file to Collada file, so a script has been created to round all the numbers down to x decimal places in your .dae file. Its probably best if you skip this step initially and see if IKFast can generate a solution with your default values, but if the generator takes longer than, say, an hour, try the following::
+You may have to install the urdf_to_collada package first with the following::
+
+ sudo apt-get install ros-kinetic-urdf-collada-urdf
+
+Often floating point issues arise in converting a URDF file to Collada file, so a script has been created to round all the numbers down to x decimal places in your .dae file. Its probably best if you skip this step initially and see if IKFast can generate a solution with your default values, but if the generator takes longer than, say, an hour, try the following::
 
  rosrun moveit_ikfast round_collada_numbers.py <input_dae> <output_dae> <decimal places>
 
